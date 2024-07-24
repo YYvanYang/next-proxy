@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# NextProxy
 
-## Getting Started
+NextProxy is a lightweight, efficient OpenAI API proxy built with Next.js 14+ and its App Router. It provides a seamless way to interact with OpenAI's API while adding useful features like CORS support, error handling, and streaming capabilities.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Easy Integration**: Built on Next.js 14+, making it easy to deploy and integrate with existing Next.js applications.
+- **CORS Support**: Automatically handles CORS headers for cross-origin requests.
+- **Error Handling**: Robust error handling to manage API and network issues gracefully.
+- **Streaming Support**: Capable of handling streaming responses from OpenAI API.
+- **Multiple HTTP Methods**: Supports GET, POST, PUT, and DELETE methods.
+- **Edge Runtime**: Utilizes Next.js Edge Runtime for improved performance.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/nextproxy.git
+   cd nextproxy
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-## Learn More
+3. Set up your environment variables:
+   Create a `.env.local` file in the root directory and add:
+   ```
+   OPENAI_API_HOST=https://api.openai.com
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Start the development server:
+   ```
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Your proxy will be available at `http://localhost:3000/api/proxy`
 
-## Deploy on Vercel
+3. To use the proxy, send your OpenAI API requests to `/api/proxy` instead of directly to OpenAI. For example:
+   ```javascript
+   fetch('http://localhost:3000/api/proxy/v1/chat/completions', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+       'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+     },
+     body: JSON.stringify({
+       model: "gpt-3.5-turbo",
+       messages: [{role: "user", content: "Hello!"}]
+     })
+   })
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy your NextProxy to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/nextproxy)
+
+Remember to set the `OPENAI_API_HOST` environment variable in your Vercel project settings.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Disclaimer
+
+This project is not officially associated with OpenAI. Please ensure you comply with OpenAI's use-case policy when using this proxy.
