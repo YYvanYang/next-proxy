@@ -36,7 +36,7 @@ export default function Home() {
         <li>Edge Runtime</li>
       </ul>
       <footer className="mt-8 text-center text-gray-500 dark:text-gray-400">
-        <p>{"NextProxy is not officially associated with OpenAI. Use responsibly and in compliance with OpenAI's policies."}</p>
+        <p>NextProxy is not officially associated with OpenAI. Use responsibly and in compliance with OpenAI&apos;s policies.</p>
       </footer>
     </div>
   );
