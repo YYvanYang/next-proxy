@@ -91,6 +91,4 @@ async function handleRequest(request: NextRequest) {
   }
 }
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = "edge";
